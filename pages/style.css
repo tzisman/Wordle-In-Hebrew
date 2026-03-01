@@ -1,0 +1,515 @@
+:root {
+  --color: white;
+  --dark: 30%;
+  --tile-size: 100px;
+}
+
+html,
+body {
+  direction: rtl;
+  text-align: center;
+  margin: 0px;
+  font-family: Secular One;
+}
+
+.bg {
+  margin: auto;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(rgba(12, 48, 70, 0.25) 20%, transparent 21%),
+    radial-gradient(circle, #1256a5 0%, #114172 100%);
+  background-size: 19px 19px, 100% 100%;
+  background-repeat: repeat;
+  animation: moveBackground 100s linear infinite;
+}
+
+@keyframes moveBackground {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+.gray {
+  --color: #dddddd;
+}
+
+.yellow {
+  --color: #e6e681;
+}
+
+.green {
+  --color: #98d37f;
+}
+
+.game-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  margin: 0px;
+}
+
+.empty-tile {
+  margin: 0px 4px;
+  --tile-size: 58px;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border: 1px dashed #082b4e;
+  font-size: calc(var(--tile-size)/2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(50, 50, 50, 0.5);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.tile {
+  margin: 0px calc(var(--tile-size)/10);
+  width: var(--tile-size);
+  height: var(--tile-size);
+  border-bottom: calc(var(--tile-size)/16) solid color-mix(in srgb, var(--color) calc(100% - var(--dark)), black var(--dark));
+  background-color: var(--color);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 4px 17px 0 rgba(0, 0, 0, 0.19);
+  border-radius: calc(var(--tile-size)/9);
+  outline: calc(var(--tile-size)/25) solid #082b4e;
+  font-size: calc(var(--tile-size)/2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+
+}
+
+.big-tile {
+  animation: jump 1s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+.mid-tile {
+  --tile-size: 58px;
+  text-shadow: none;
+  margin: 0px 5px;
+  border-radius: 1px;
+  box-shadow: none;
+  outline-width: 1px;
+  border-bottom: 2px solid color-mix(in srgb, var(--color) calc(100% - var(--dark)), black var(--dark));
+
+  padding: 0px;
+}
+
+button {
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  border: calc(var(--tile-size)/25) solid #082b4e;
+}
+
+
+.round-button {
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+
+
+.start-button {
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes jump {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  .big-tile {
+    --tile-size: 60px;
+  }
+}
+
+#message {
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #082b4e;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 4px 17px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  width: 300px;
+  border-radius: 8px;
+
+  transform: translateX(100%);
+  opacity: 0;
+
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.showMsg {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+#message-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+.messageTitleItems {
+  color: #082b4e;
+  font-size: 25px;
+  margin: 10px 0px 0px 0px;
+}
+
+hr {
+  border: 1px solid #082b4e;
+}
+
+#messageContent {
+  color: #082b4e;
+  font-size: 15px;
+  width: 100%;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
+.xClick {
+  font-family: Secular One;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.xClick:hover {
+  color: #75B15C;
+}
+
+.xClick:active {
+  transform: scale(0.75);
+}
+
+.icons {
+  height: 50px;
+  width: 50px;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+
+.icon-start {
+  height: 80px;
+  width: 80px;
+}
+
+
+.icons:hover {
+  transform: scale(1.2);
+}
+
+.icons:active {
+  transform: scale(0.85);
+}
+
+
+
+.header {
+  margin: 0px;
+  display: flex;
+  padding: 0px;
+  height: 100px;
+}
+
+.title {
+  margin: 0px auto;
+  transform: scale(0.35);
+  padding: 0px;
+}
+
+.svg {
+  margin: 0px 0px 0px 0px;
+  fill: white;
+  width: 20px;
+  height: 20px;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+  margin: 10px 20px;
+}
+
+
+.menu {
+  width: 150px;
+  right: 0px;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(rgba(12, 48, 70, 0.25) 20%, transparent 21%),
+    radial-gradient(circle, #1256a5 0%, #114172 100%);
+  background-size: 19px 19px, 100% 100%;
+  background-repeat: repeat;
+  animation: moveBackground 100s linear infinite;
+  display: grid;
+  grid-template-rows: 1fr 400px;
+  transition: all 0.5s ease;
+}
+
+
+@media only screen and (max-width: 580px) {
+  .mid-tile {
+    --tile-size: 52px;
+  }
+
+  .empty-tile {
+    --tile-size: 52px;
+  }
+
+  .menu {
+    width: 110px;
+  }
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px;
+  flex: 1;
+}
+
+.page {
+  display: flex;
+}
+
+.keyboard {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(18, 86, 165, 0.1);
+  flex-wrap: wrap;
+  padding: 20px;
+  transition: all 0.4s ease;
+  margin-top: auto;
+  transition: all 0.5s ease;
+}
+
+.keyboard-none {
+  display: none;
+  opacity: 0;
+
+}
+
+.tiles {
+  padding: 20px;
+}
+
+.letter {
+  width: 30px;
+  height: 30px;
+  outline: 0.2px solid #06213b;
+  border-width: 2px;
+  border-radius: 0px;
+  font-size: 20px;
+  margin: 4px;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.game-name-text {
+  font-size: 30px;
+  margin: 10px 0px 0px 0px;
+  color: white;
+}
+
+.small-icons-text-contain {
+  height: 25px;
+  margin: 25px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.small-icons-text {
+  margin-right: 8px;
+  font-size: 18px;
+  color: white;
+}
+
+.small-icons {
+  height: 20px;
+  width: 20px
+}
+
+.game-buttons {
+  justify-self: flex-end;
+  margin: auto;
+}
+
+.menu-deatails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.keyboardEffect {
+  border-color: var(--color);
+}
+
+@keyframes fillDown {
+  0% {
+    background-position: 0 100%;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.letter-fill {
+  background: linear-gradient(to bottom, var(--color) 50%, transparent 50%);
+  background-size: 100% 200%;
+  animation: fillDown 0.4s forwards;
+  transition: all 0.5s ease;
+}
+
+.tile-into-message {
+  font-size: 50px;
+  color: #06213b;
+}
+
+.content-into-message {
+  font-size: 20px;
+  color: #06213b;
+}
+
+
+
+.next-muve-button {
+  background-color: #114172;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  padding: 6px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 90px;
+  margin: 50px auto;
+  transition: all 0.5s ease;
+
+}
+
+.next-muve-button:hover {
+  transform: scale(1.2);
+}
+
+.next-muve-button:active {
+  transform: scale(0.85);
+}
+
+.record-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  max-width: 450px;
+  margin: 30px auto;
+}
+
+.record-label {
+  color: #06213b;
+  font-size: 18px;
+}
+
+.name-input {
+  border: none;
+  border-bottom: 2px solid #114172;
+  outline: none;
+  background: transparent;
+  color: #114172;
+  font-size: 16px;
+  padding: 4px 8px;
+  width: 100%;
+}
+
+.check-button {
+  background-color: #114172;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.check-button:hover {
+  background-color: #06213b;
+}
+
+.into-message {
+  background-color: rgba(18, 86, 165, 0.1);
+  padding: 30px 10px;
+  
+  min-height: 84vh;
+}
+
+table {
+  margin: auto;
+  width: 320px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 16px;
+  border: none;
+}
+
+th {
+  background-color:#1256a5;
+  color: white;
+  font-size: 1.1em;
+}
+
+tr:hover {
+  background-color: rgba(18, 86, 165, 0.1);
+}
+
+td {
+  color: #333;
+  font-size: 1em;
+}
+
+.disabled {
+  height: 50px;
+  width: 50px;
+  transition: all 0.5s ease;
+  opacity: 0.8;
+}
+
+.colors{
+  color: var(--color);
+  font-weight: bold;
+}
