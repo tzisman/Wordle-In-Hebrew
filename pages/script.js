@@ -8,7 +8,7 @@ document.querySelector(".icon-start").addEventListener('mousedown', function (ev
     }, 170);
 
     setTimeout(() => {
-        window.location.href = "pages/game.html";
+        window.location.href = "pages/main.html";
     }, 500);
 });
 
